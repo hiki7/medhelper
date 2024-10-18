@@ -13,19 +13,19 @@ export class RegisterComponent {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
     if (this.password === this.confirmPassword) {
       this.authService.register(this.firstName, this.lastName, this.email, this.password).subscribe(() => {
-        alert('Registration successful! You can now log in.');
         this.router.navigate(['/confirmation']);
       }, error => {
-        alert('Registration failed. Please try again.');
+        this.errorMessage = 'Registration failed. Please try again.';
       });
     } else {
-      alert('Passwords do not match!');
+      this.errorMessage = 'Passwords do not match!';
     }
   }
 }

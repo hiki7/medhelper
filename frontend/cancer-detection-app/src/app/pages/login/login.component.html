@@ -2,9 +2,9 @@
   <div class="login-container">
     <div class="login-form">
       <h1>Login</h1>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
       <input type="email" id="email" [(ngModel)]="email" placeholder="Email" required>
       <input class="last-input" type="password" id="password" [(ngModel)]="password" placeholder="Password" required>
-      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
       <button (click)="login()">Login</button>
       <p class="signup-prompt">Don't have an account? <a routerLink="/register">Register</a></p>
     </div>
