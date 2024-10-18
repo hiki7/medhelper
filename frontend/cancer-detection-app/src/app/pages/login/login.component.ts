@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         this.logged = true;
         localStorage.setItem('access', data.access);
         localStorage.setItem('refresh', data.refresh);
-        this.router.navigate(['/chat']);  // Redirect to profile on success
+        this.router.navigate(['/']);  // Redirect to profile on success
       }
     }, error => {
       alert('Login failed. Please check your credentials.');

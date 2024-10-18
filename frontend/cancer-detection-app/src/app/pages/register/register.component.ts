@@ -8,6 +8,8 @@ import { AuthService } from '../../auth.service'; // Adjust the path as necessar
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  firstName: string = '';
+  lastName: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -16,7 +18,7 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.password === this.confirmPassword) {
-      this.authService.register(this.email, this.password).subscribe(() => {
+      this.authService.register(this.firstName, this.lastName, this.email, this.password).subscribe(() => {
         alert('Registration successful! You can now log in.');
         this.router.navigate(['/login']);
       }, error => {
