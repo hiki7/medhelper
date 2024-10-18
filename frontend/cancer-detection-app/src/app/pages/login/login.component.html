@@ -1,10 +1,11 @@
-<div class="login-container">
-  <div class="login-form">
-    <h1>Login to Your Account</h1>
-    <input type="email" id="email" [(ngModel)]="email" placeholder="Email" required>
-    <input type="password" id="password" [(ngModel)]="password" placeholder="Password" required>
-    <button (click)="login()">Continue</button>
-
-    <p class="signup-prompt">Don't have an account? <a routerLink="/register">Register here</a></p>
+<div class="login-wrapper">
+  <div class="login-container">
+    <div class="login-form">
+      <h1>Login</h1>
+      <input type="email" id="email" [(ngModel)]="email" placeholder="Email" required>
+      <input class="last-input" type="password" id="password" [(ngModel)]="password" placeholder="Password" required>
+      <button (click)="login()">Login</button>
+      <p class="signup-prompt">Don't have an account? <a routerLink="/register">Register</a></p>
+    </div>
   </div>
 </div>
