@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   logged: boolean = false;
   email: string = '';
   password: string = '';
+  errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -31,10 +32,10 @@ export class LoginComponent implements OnInit {
         this.logged = true;
         localStorage.setItem('access', data.access);
         localStorage.setItem('refresh', data.refresh);
-        this.router.navigate(['/']);  // Redirect to profile on success
+        this.router.navigate(['/']);
       }
     }, error => {
-      alert('Login failed. Please check your credentials.');
+      this.errorMessage = 'Login failed. Please check your credentials.';
     });
   }
 
