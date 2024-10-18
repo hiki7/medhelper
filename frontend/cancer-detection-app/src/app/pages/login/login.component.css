@@ -72,3 +72,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
+.error-message {
+  color: red;           /* Color for error message */
+  margin-bottom: 15px; /* Spacing below the error message */
+  text-align: center;   /* Center the error message */
+}
+
