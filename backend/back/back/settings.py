@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'back',
     'login',
+    'assistant',
     # third part apps
     'django_celery_beat',
     "rest_framework",
@@ -48,6 +49,9 @@ INSTALLED_APPS = [
 
     "corsheaders",
 ]
+
+AZURE_SUBSCRIPTION_KEY = '575ffafce3024e9ea31fdc6b474f0e51'
+AZURE_OPENAI_ENDPOINT = 'https://aask-m2a0qf22-swedencentral.openai.azure.com/openai/deployments/gpt-4-2/chat/completions?api-version=2024-08-01-preview'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

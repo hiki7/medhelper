@@ -21,6 +21,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.conf import settings
 from login.views import CustomTokenObtainPairView
 from login.views import RegisterView,EmailConfirmView
+from assistant.views import openai_assistant_view
 
 
 urlpatterns = [
@@ -30,5 +31,6 @@ urlpatterns = [
     path("refresh/", TokenRefreshView.as_view()),
     path('register/', RegisterView.as_view(), name='register'),
     path('confirm-email/<str:token>/', EmailConfirmView.as_view(), name='confirm_email'),
+    path('assistant/', openai_assistant_view, name='openai_assistant'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
