@@ -20,7 +20,7 @@ export class RegisterComponent {
     if (this.password === this.confirmPassword) {
       this.authService.register(this.firstName, this.lastName, this.email, this.password).subscribe(() => {
         alert('Registration successful! You can now log in.');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/confirmation']);
       }, error => {
         alert('Registration failed. Please try again.');
       });
