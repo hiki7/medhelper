@@ -1,17 +1,3 @@
-<nav class="navbar">
-  <a routerLink="/" class="navbar-logo">
-    <span class="logo-text">Cancer Detection App</span>
-  </a>
-  <div class="navbar-section-right">
-    <ng-container *ngIf="!logged">
-      <a routerLink="/login" class="navbar-item">Login</a>
-    </ng-container>
-    <ng-container *ngIf="logged">
-      <a routerLink="/profile" class="navbar-item">Profile</a>
-    </ng-container>
-  </div>
-</nav>
-
 <div class="login-container">
   <div class="login-form">
     <h1>Login to Your Account</h1>

@@ -1,34 +1,58 @@
 {
-  "hash": "1789bd5e",
-  "configHash": "9a9912e6",
+  "hash": "cccf71f4",
+  "configHash": "79f1d7ba",
   "lockfileHash": "5f87eef4",
-  "browserHash": "d5360e9a",
+  "browserHash": "f3abaa13",
   "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "a2e9edab",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "e9072a52",
+      "needsInterop": false
+    },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "5ac644a9",
+      "fileHash": "a7e144a3",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "abad7331",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "875d5591",
+      "fileHash": "e5c2fba8",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "da938b3d",
+      "fileHash": "1ba8cea9",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-XHCZYHG3": {
-      "file": "chunk-XHCZYHG3.js"
+    "chunk-YGKF7VYI": {
+      "file": "chunk-YGKF7VYI.js"
     },
-    "chunk-I4AHI2R4": {
-      "file": "chunk-I4AHI2R4.js"
+    "chunk-V6RUAOAI": {
+      "file": "chunk-V6RUAOAI.js"
+    },
+    "chunk-Y5IAB3P7": {
+      "file": "chunk-Y5IAB3P7.js"
+    },
+    "chunk-F5BRNNIR": {
+      "file": "chunk-F5BRNNIR.js"
     }
   }
 }

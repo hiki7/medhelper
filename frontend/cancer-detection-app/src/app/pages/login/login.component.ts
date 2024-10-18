@@ -16,10 +16,12 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    const access: string | null = localStorage.getItem('access');
-    if (access) {
-      this.logged = true;
-      this.router.navigate(['/chat']);  // Redirect if already logged in
+    if (typeof window !== 'undefined') {
+      const access: string | null = localStorage.getItem('access');
+      if (access) {
+        this.logged = true;
+        this.router.navigate(['/chat']);
+      }
     }
   }
 
