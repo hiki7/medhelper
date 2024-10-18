@@ -3,22 +3,28 @@ html, body {
   margin: 0;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .confirmation-wrapper {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 18px;
 }
 
 .confirmation-container {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   padding: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: var(--focus);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-top: -150px;
 }
 
 h1 {
@@ -26,7 +32,7 @@ h1 {
 }
 
 a {
-  color: #007BFF; /* Change to match your design */
+  color: var(--button); /* Change to match your design */
   text-decoration: none;
 }
 
