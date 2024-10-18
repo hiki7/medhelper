@@ -1,0 +1,27 @@
+.main-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.chat-button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.chat-button:hover {
+  background-color: #0056b3;
+}
+
+.login-section a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.login-section a:hover {
+  text-decoration: underline;
+}
