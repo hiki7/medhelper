@@ -4,12 +4,14 @@
     <ul class="navbar-menu">
       <li><a routerLink="/" routerLinkActive="active">Home</a></li>
       <li><a routerLink="/chat" routerLinkActive="active">Chat</a></li>
-      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li *ngIf="!logged"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li *ngIf="logged"><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
     </ul>
   </div>
 </nav>
 
 <router-outlet></router-outlet>
+
 <footer class="footer">
   <div class="footer-content">
     <p>&copy; 2024 Cancer Detection App. All rights reserved.</p>
@@ -20,4 +22,3 @@
     </nav>
   </div>
 </footer>
-
