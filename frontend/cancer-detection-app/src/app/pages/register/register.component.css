@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
 }
+
 .login-wrapper {
   min-height: 100vh;
   display: flex;
@@ -9,6 +10,7 @@ html, body {
   align-items: center;
   justify-content: center;
 }
+
 .login-container {
   max-width: 400px;
   margin: -150px auto 0;
@@ -41,9 +43,11 @@ input {
   border-radius: 6px;
   font-size: 18px;
 }
+
 .last-input {
   margin-bottom: 30px;
 }
+
 button {
   padding: 10px;
   background-color: var(--button);
