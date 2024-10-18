@@ -1,30 +1,38 @@
-.logout-wrapper {
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.logout-wrapper { /* Full height wrapper */
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 18px;
 }
 
-.logout-container {
-  max-width: 400px;
+.logout-container { /* Container for centered content */
+  max-width: 600px;
   width: 100%;
   padding: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: var(--focus);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-top: -150px;
 }
 
-button {
-  padding: 10px;
-  background-color: #007BFF; /* Customize as needed */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+h1 {
+  margin-bottom: 20px;
 }
 
-button:hover {
-  background-color: #0056b3; /* Customize as needed */
+.login-link { /* Style for the login link */
+  color: var(--button); /* Link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Make the link bold */
+}
+
+.login-link:hover { /* Hover effect for the link */
+  text-decoration: underline; /* Underline on hover */
 }

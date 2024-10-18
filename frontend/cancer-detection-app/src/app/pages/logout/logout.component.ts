@@ -11,7 +11,10 @@ export class LogoutComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    this.authService.logout(); // Call logout logic to clear tokens
+    // Check if running in the browser before calling logout
+    if (typeof window !== 'undefined') {
+      this.authService.logout(); // Call logout logic to clear tokens
+    }
   }
 
   redirectToLogin() {

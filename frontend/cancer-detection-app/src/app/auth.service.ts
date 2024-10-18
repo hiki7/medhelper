@@ -14,7 +14,7 @@ export interface Token {
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/'; // Adjust based on your Django setup
 
-  constructor(private http: HttpClient, public authState: AuthStateService) {} // Change to public
+  constructor(private http: HttpClient, public authState: AuthStateService) {}
 
   login(email: string, password: string): Observable<Token> {
     return this.http.post<Token>(`${this.apiUrl}login/`, { email, password });
@@ -25,9 +25,12 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('access');
-    localStorage.removeItem('refresh');
-    this.authState.setLoggedIn(false); // Notify the state change
+    // Check if running in the browser
+    if (typeof window !== 'undefined' && localStorage) {
+      localStorage.removeItem('access');
+      localStorage.removeItem('refresh');
+      this.authState.setLoggedIn(false); // Notify the state change
+    }
   }
 
   handleLogin(data: Token): void {
