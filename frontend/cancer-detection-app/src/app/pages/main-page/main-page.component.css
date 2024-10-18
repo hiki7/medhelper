@@ -1,20 +1,53 @@
 .main-container {
+  position: relative; /* Keep relative for positioning overlay */
+  width: 100%;
+  height: 100vh; /* Full height of the viewport */
+  margin: 0;
+  padding: 20px 30px;
+  background-image: url("../../../assets/main-background.jpg"); /* Path to your image */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Cover the entire container */
   text-align: center;
-  margin-top: 50px;
-  height: 100vh;
 }
 
-.title-section {
-  padding: 20px;
-  margin-bottom: 20px;
+.overlay {
+  content: ""; /* Make the overlay work */
+  position: absolute; /* Position it absolutely within the main container */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75); /* Dark overlay */
+  z-index: 1; /* Overlay above the background */
 }
+
+.shadow {
+  position: relative; /* Position relative for z-index */
+  z-index: 2; /* Ensure the shadow div is above the overlay */
+  padding: 20px; /* Add some padding */
+  border-radius: 8px; /* Optional: round the corners */
+  background-color: rgba(255, 255, 255, 0.1); /* White background for contrast */
+  margin: 100px auto; /* Center the shadow div */
+  max-width: 1200px; /* Set a maximum width for better readability */
+}
+
+.title-section, .login-section, .chat-section {
+  padding: 20px; /* Add some padding */
+}
+
 .title {
   font-size: 50px;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-top: 40px; /* Increased top margin */
+  margin-bottom: 20px; /* Increased bottom margin */
+  color: var(--text); /* Text color for visibility */
 }
+
 .description {
   font-size: 22px;
+  margin-bottom: 30px; /* Added margin for spacing */
+  color: var(--text);
+  font-weight: bold/* Text color for visibility */
 }
 
 .chat-button {
@@ -33,7 +66,7 @@
 }
 
 .login-section a {
-  color: var(--button);
+  color: var(--text-alt);
   font-weight: bold;
   text-decoration: none;
 }

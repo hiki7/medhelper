@@ -1,11 +1,13 @@
 :root {
-  --background: #fef6e4;
+  --background: #232946;
   --secondary: #31363F;
-  --navbar-text: #001858;
-  --focus: #f3d2c1;
-  --text: #172c66;
-  --button: #f582ae;
-  --button-hover: #d47398;
+  --navbar-text: #fffffe;
+  --focus: #d4d8f0;
+  --text: #fffffe;
+  --text-alt: #b8c1ec;
+  --button: #abb7d2;
+  --button-hover: #9aa3b7;
+  --other-focus: #ffacb6;
 }
 
 * {
