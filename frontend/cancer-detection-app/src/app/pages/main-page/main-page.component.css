@@ -1,64 +1,76 @@
 .main-container {
-  position: relative; /* Keep relative for positioning overlay */
+  position: relative;
   width: 100%;
-  height: 100vh; /* Full height of the viewport */
+  height: 100vh;
   margin: 0;
   padding: 20px 30px;
-  background-image: url("../../../assets/main-background.jpg"); /* Path to your image */
+  background-image: url("../../../assets/main-background.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; /* Cover the entire container */
+  background-size: cover;
   text-align: center;
 }
 
 .overlay {
-  content: ""; /* Make the overlay work */
-  position: absolute; /* Position it absolutely within the main container */
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.75); /* Dark overlay */
-  z-index: 1; /* Overlay above the background */
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
 }
 
 .shadow {
-  position: relative; /* Position relative for z-index */
-  z-index: 2; /* Ensure the shadow div is above the overlay */
-  padding: 20px; /* Add some padding */
-  border-radius: 8px; /* Optional: round the corners */
-  background-color: rgba(255, 255, 255, 0.1); /* White background for contrast */
-  margin: 100px auto; /* Center the shadow div */
-  max-width: 1200px; /* Set a maximum width for better readability */
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.25);
+  margin: 100px auto;
+  max-width: 1200px;
+  opacity: 0;
+  animation: fadeIn 0.7s forwards;
 }
 
 .title-section, .login-section, .chat-section {
-  padding: 20px; /* Add some padding */
+  padding: 20px;
 }
 
 .title {
   font-size: 50px;
-  margin-top: 40px; /* Increased top margin */
-  margin-bottom: 20px; /* Increased bottom margin */
-  color: var(--text); /* Text color for visibility */
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: var(--text);
+  animation-delay: 1s;
+  will-change: opacity, transform;
 }
 
 .description {
   font-size: 22px;
-  margin-bottom: 30px; /* Added margin for spacing */
+  margin-bottom: 30px;
   color: var(--text);
-  font-weight: bold/* Text color for visibility */
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeIn 2.5s forwards;
+  animation-delay: 1s;
+  will-change: opacity, transform;
 }
 
 .chat-button {
   padding: 10px 20px;
   background-color: var(--button);
-  color: var(--text);
+  color: var(--background);
   border: none;
   cursor: pointer;
   font-size: 22px;
   font-weight: bold;
   margin-top: 20px;
+  opacity: 0;
+  animation: fadeIn 2.5s forwards;
+  animation-delay: 1s;
+  will-change: opacity, transform;
 }
 
 .chat-button:hover {
@@ -73,4 +85,15 @@
 
 .login-section a:hover {
   text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
