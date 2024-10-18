@@ -1,15 +1,18 @@
 <div class="main-container">
-  <div class="title-section">
-    <h1 class="title">Welcome to Cancer Detection App</h1>
-    <p class="description">Our app uses advanced machine learning algorithms to help identify cancer in X-ray images. Upload your X-rays and get fast results!</p>
-  </div>
-  <div class="login-section">
-    <p class="description">Please <a routerLink="/login">login</a> or <a routerLink="/register">create an account</a> to start using our service.</p>
-  </div>
+  <div class="overlay"></div>
+  <div class="shadow">
+    <div class="title-section">
+      <h1 class="title">Welcome to Cancer Detection App</h1>
+      <p class="description">Our app uses advanced machine learning algorithms to help identify cancer in X-ray images. Upload your X-rays and get fast results!</p>
+    </div>
 
-  <div class="chat-section">
-    <p class="description">If you're already a user, click the button below to chat with our AI assistant and upload your X-rays.</p>
-    <button (click)="goToChat()" class="chat-button">Go to Chat</button>
+    <div class="login-section">
+      <p class="description">Please <a routerLink="/login">login</a> or <a routerLink="/register">create an account</a> to start using our service.</p>
+    </div>
+
+    <div class="chat-section">
+      <p class="description">If you're already a user, click the link below to chat with our AI assistant and upload your X-rays.</p>
+      <a routerLink="/chat" class="chat-button">Go to Chat</a>
+    </div>
   </div>
 </div>
-

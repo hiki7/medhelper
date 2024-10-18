@@ -28,7 +28,7 @@ h1 {
 }
 
 .login-link { /* Style for the login link */
-  color: var(--button); /* Link color */
+  color: var(--background); /* Link color */
   text-decoration: none; /* Remove underline */
   font-weight: bold; /* Make the link bold */
 }

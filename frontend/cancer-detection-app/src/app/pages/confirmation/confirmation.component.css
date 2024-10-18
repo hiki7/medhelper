@@ -32,7 +32,7 @@ h1 {
 }
 
 a {
-  color: var(--button); /* Change to match your design */
+  color: var(--background); /* Change to match your design */
   text-decoration: none;
 }
 
