@@ -107,8 +107,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'cancerdetector',  
-        'USER': 'postgres', 
-        'PASSWORD': 'pass123',  
+        'USER': 'cancerdetector_admin',
+        'PASSWORD': 'QAZqaz123',
         'HOST': 'localhost',  
         'PORT': '5432',
     }
