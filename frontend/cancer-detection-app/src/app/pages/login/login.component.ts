@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    // Subscribe to logged in status
     this.authService.authState.loggedIn$.subscribe(loggedIn => {
       this.logged = loggedIn;
       if (loggedIn) {
@@ -25,15 +24,17 @@ export class LoginComponent implements OnInit {
       }
     });
 
-    // Check if already logged in
-    const access: string | null = localStorage.getItem('access');
-    this.logged = !!access; // Set logged status based on access token
+    // Check if running in the browser before accessing localStorage
+    if (typeof window !== 'undefined') {
+      const access: string | null = localStorage.getItem('access');
+      this.logged = !!access; // Set logged status based on access token
+    }
   }
 
   login(): void {
     this.authService.login(this.email, this.password).subscribe(data => {
       this.authService.handleLogin(data); // Handle login logic
-      this.router.navigate(['/']);
+      this.router.navigate(['/']); // Redirect to main page
     }, error => {
       this.errorMessage = 'Login failed. Please check your credentials.';
     });
