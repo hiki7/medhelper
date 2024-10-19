@@ -7,7 +7,7 @@ html, body {
     display: flex;
     justify-content: center; /* Center the flex items */
     align-items: stretch; /* Make sure items stretch to the full height */
-    height: calc(100vh - 100px); /* Adjust the height based on your needs */
+    height: calc(100vh - 70px); /* Adjust the height based on your needs */
 }
 
 .chat-list {
@@ -25,7 +25,7 @@ html, body {
 
 .chat-list button {
     padding: 10px;
-    background-color: #28a745;
+    background-color: var(--button-bright);
     color: white;
     border: none;
     border-radius: 4px;
@@ -35,7 +35,7 @@ html, body {
 }
 
 .chat-list button:hover {
-    background-color: #218838;
+    background-color: var(--button-bright-hover);
 }
 
 .chat-list ul {
@@ -185,7 +185,7 @@ button:hover {
 
 .upload-section button {
     padding: 10px;
-    background-color: #28a745; /* Green color for the button */
+    background-color: var(--button-bright); /* Green color for the button */
     color: white;
     border: none;
     border-radius: 4px;
@@ -194,6 +194,6 @@ button:hover {
 }
 
 .upload-section button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: var(--button-bright-hover); /* Darker green on hover */
 }
 

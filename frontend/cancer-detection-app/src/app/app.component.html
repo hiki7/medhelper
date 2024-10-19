@@ -1,8 +1,8 @@
 <nav class="navbar">
   <div class="navbar-container">
-    <a routerLink="/" class="navbar-logo">Cancer Detection App</a>
+    <a routerLink="/" class="navbar-logo">medhelper</a>
     <ul class="navbar-menu">
-      <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
       <li><a routerLink="/chat" routerLinkActive="active">Chat</a></li>
       <li *ngIf="!logged"><a routerLink="/login" routerLinkActive="active">Login</a></li>
       <li *ngIf="logged"><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
@@ -14,11 +14,10 @@
 
 <footer class="footer">
   <div class="footer-content">
-    <p>&copy; 2024 Cancer Detection App. All rights reserved.</p>
+    <p>&copy; 2024 medhelper. All rights reserved.</p>
     <nav class="footer-nav">
       <a routerLink="/">Home</a>
       <a routerLink="/chat">Chat</a>
-      <a routerLink="/login">Login</a>
     </nav>
   </div>
 </footer>

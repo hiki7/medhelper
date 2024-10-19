@@ -14,7 +14,7 @@ export class ChatComponent implements OnInit {
   messages: { text: string; isUser: boolean }[] = [];
   userInput: string = '';
   selectedFile: File | null = null;
-  showTextarea: boolean = false;
+  showTextarea: boolean = true; // Ensure textarea is shown by default
   chatList: any[] = []; // For storing chat list
   currentChat: any; // To store the selected chat
 
@@ -33,7 +33,6 @@ export class ChatComponent implements OnInit {
       }
     });
 
-    // Check if the user is logged in
     if (typeof window !== 'undefined' && window.localStorage) {
       const access: string | null = localStorage.getItem('access');
       this.isLoggedIn = !!access; // Set logged status based on access token
@@ -42,8 +41,8 @@ export class ChatComponent implements OnInit {
       }
     }
 
-    // Fetch the chat list when the component initializes
     this.loadChatList();
+    this.createNewChat(); // Automatically create a new chat on initialization
   }
 
   loadChatList(): void {
@@ -62,21 +61,27 @@ export class ChatComponent implements OnInit {
   }
 
   uploadXray(): void {
+    const formData = new FormData();
+    formData.append('description', this.userInput);
+    formData.append('chat_title', this.currentChat.title); // Include chat title
     if (this.selectedFile) {
-      this.messages.push({ text: 'Uploading X-ray...', isUser: true });
-
-      // Simulate a delay for the upload process
-      setTimeout(() => {
-        this.messages.push({ text: 'AI: X-ray uploaded successfully! What would you like to ask?', isUser: false });
-        this.showTextarea = true; // Show textarea after upload
-        this.scrollToBottom(); // Scroll to the bottom after message
-      }, 1000); // Simulated upload time
-
-      (document.getElementById('xray-upload') as HTMLInputElement).value = '';
-      this.selectedFile = null; // Clear selected file after upload
-    } else {
-      this.messages.push({ text: 'Please select an X-ray file to upload.', isUser: false });
+      formData.append('image', this.selectedFile); // Include the image file
     }
+
+    this.chatService.uploadImageOrText(formData).subscribe(
+      response => {
+        this.messages.push({ text: 'AI: X-ray uploaded successfully! What would you like to ask?', isUser: false });
+        this.scrollToBottom();
+        this.showTextarea = true; // Show textarea after upload
+      },
+      error => {
+        console.error('Error uploading X-ray:', error);
+        this.messages.push({ text: 'Failed to upload X-ray. Please try again.', isUser: false });
+      }
+    );
+
+    (document.getElementById('xray-upload') as HTMLInputElement).value = '';
+    this.selectedFile = null; // Clear selected file after upload
   }
 
   createNewChat(): void {
@@ -89,12 +94,10 @@ export class ChatComponent implements OnInit {
     if (this.userInput.trim()) {
       this.messages.push({ text: this.userInput, isUser: true });
 
-      // If there's no current chat, create one
       if (!this.currentChat) {
         this.createNewChat();
       }
 
-      // Save the user message and get AI response
       this.chatService.sendMessage(this.currentChat.title, this.userInput).subscribe(
         response => {
           const aiResponse = response.result; // Assuming your API returns the AI response
@@ -120,7 +123,7 @@ export class ChatComponent implements OnInit {
   selectChat(chat: any): void {
     this.currentChat = chat; // Set the current chat to the selected chat
     this.messages = []; // Clear messages for the new chat
-    this.showTextarea = false; // Hide the textarea until the user uploads an X-ray
+    this.showTextarea = true; // Show the textarea
     this.loadChatContext(chat.title); // Load the context of the selected chat
   }
 
@@ -129,13 +132,11 @@ export class ChatComponent implements OnInit {
       response => {
         this.messages = []; // Clear previous messages
         response.context.forEach((msg: any) => {
-          // Add user message
           this.messages.push({
             text: msg.content,
             isUser: msg.role === 'user'
           });
 
-          // Add AI response if it exists
           if (msg.response) {
             this.messages.push({
               text: msg.response,
