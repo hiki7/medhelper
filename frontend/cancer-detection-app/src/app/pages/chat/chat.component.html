@@ -1,0 +1,29 @@
+<div class="chat-container" *ngIf="isLoggedIn; else loginPrompt">
+    <div class="header">
+        <h1>Chat with AI Assistant</h1>
+    </div>
+
+    <div class="message-display" #messageDisplay>
+        <div *ngFor="let message of messages">
+            <p [ngClass]="{'user-message': message.isUser, 'ai-message': !message.isUser}">
+                {{ message.text }}
+            </p>
+        </div>
+    </div>
+
+    <div class="upload-section">
+        <input type="file" id="xray-upload" (change)="onFileSelected($event)" accept="image/*" />
+        <button (click)="uploadXray()">Upload X-ray</button>
+    </div>
+
+    <div class="input-section" *ngIf="showTextarea">
+        <textarea [(ngModel)]="userInput" placeholder="Type your message here..." rows="3"></textarea>
+        <button (click)="sendMessage()">Send</button>
+    </div>
+</div>
+
+<ng-template #loginPrompt>
+    <div class="redirect-message">
+        <p>You need to <a routerLink="/login">log in</a> to access this chat.</p>
+    </div>
+</ng-template>
