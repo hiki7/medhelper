@@ -11,4 +11,8 @@ export class AuthStateService {
   setLoggedIn(value: boolean) {
     this.loggedInSubject.next(value);
   }
+
+  isLoggedIn(): boolean {
+    return this.loggedInSubject.value;
+  }
 }

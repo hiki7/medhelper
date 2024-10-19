@@ -25,8 +25,7 @@ export class AuthService {
   }
 
   logout(): void {
-    // Check if running in the browser
-    if (typeof window !== 'undefined' && localStorage) {
+    if (typeof window !== 'undefined') {
       localStorage.removeItem('access');
       localStorage.removeItem('refresh');
       this.authState.setLoggedIn(false); // Notify the state change
