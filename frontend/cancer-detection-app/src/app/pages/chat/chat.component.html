@@ -1,6 +1,17 @@
 <div class="chat-container" *ngIf="isLoggedIn; else loginPrompt">
     <div class="header">
         <h1>Chat with AI Assistant</h1>
+        <!-- Remove the New Chat button -->
+        <!-- <button (click)="createNewChat()">New Chat</button> -->
+    </div>
+
+    <div class="chat-list">
+        <h2>Your Chats</h2>
+        <ul>
+            <li *ngFor="let chat of chatList" (click)="selectChat(chat)">
+                {{ chat.title }} <!-- Display chat titles -->
+            </li>
+        </ul>
     </div>
 
     <div class="message-display" #messageDisplay>
