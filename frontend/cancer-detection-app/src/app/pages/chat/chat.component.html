@@ -24,7 +24,7 @@
 
         <div class="upload-section">
             <label for="xray-upload" class="upload-label">
-                <input type="file" id="xray-upload" (change)="onFileSelected($event)" accept="image/*" />
+                <input type="file" id="xray-upload" (change)="onFileSelected($event)" accept="image/png" />
                 <span>Browse...</span>
             </label>
             <span *ngIf="uploadedFileName" class="uploaded-file-name">{{ uploadedFileName }}</span> <!-- Display the uploaded file name -->
