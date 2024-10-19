@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authService.login(this.email, this.password).subscribe(data => {
       this.authService.handleLogin(data); // Handle login logic
-      this.router.navigate(['/']); // Redirect to main page
+      this.router.navigate(['/chat']); // Redirect to main page
     }, error => {
       this.errorMessage = 'Login failed. Please check your credentials.';
     });
