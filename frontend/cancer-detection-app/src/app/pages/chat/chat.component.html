@@ -27,8 +27,10 @@
                 <input type="file" id="xray-upload" (change)="onFileSelected($event)" accept="image/*" />
                 <span>Browse...</span>
             </label>
+            <span *ngIf="uploadedFileName" class="uploaded-file-name">{{ uploadedFileName }}</span> <!-- Display the uploaded file name -->
             <button (click)="uploadXray()">Upload X-ray</button>
         </div>
+
 
 
         <div class="input-section" *ngIf="showTextarea">

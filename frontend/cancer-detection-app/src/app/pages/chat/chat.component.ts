@@ -14,6 +14,7 @@ export class ChatComponent implements OnInit {
   messages: { text: string; isUser: boolean }[] = [];
   userInput: string = '';
   selectedFile: File | null = null;
+  uploadedFileName: string = ''; // New property to store uploaded file name
   showTextarea: boolean = true; // Ensure textarea is shown by default
   chatList: any[] = []; // For storing chat list
   currentChat: any; // To store the selected chat
@@ -58,6 +59,7 @@ export class ChatComponent implements OnInit {
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
+    this.uploadedFileName = this.selectedFile ? this.selectedFile.name : ''; // Set the uploaded file name
   }
 
   uploadXray(): void {
@@ -82,6 +84,7 @@ export class ChatComponent implements OnInit {
 
     (document.getElementById('xray-upload') as HTMLInputElement).value = '';
     this.selectedFile = null; // Clear selected file after upload
+    this.uploadedFileName = ''; // Clear uploaded file name after upload
   }
 
   createNewChat(): void {

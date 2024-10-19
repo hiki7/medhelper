@@ -197,3 +197,11 @@ button:hover {
     background-color: var(--button-bright-hover); /* Darker green on hover */
 }
 
+.uploaded-file-name {
+    margin-left: 5px; /* Add some space between the button and the file name */
+    margin-right: 5px;
+    font-size: 13px;
+    font-weight: bold; /* Make the file name bold */
+    color: #007BFF; /* Change color to blue or any preferred color */
+}
+
