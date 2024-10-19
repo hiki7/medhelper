@@ -23,9 +23,13 @@
         </div>
 
         <div class="upload-section">
-            <input type="file" id="xray-upload" (change)="onFileSelected($event)" accept="image/*" />
+            <label for="xray-upload" class="upload-label">
+                <input type="file" id="xray-upload" (change)="onFileSelected($event)" accept="image/*" />
+                <span>Browse...</span>
+            </label>
             <button (click)="uploadXray()">Upload X-ray</button>
         </div>
+
 
         <div class="input-section" *ngIf="showTextarea">
             <textarea [(ngModel)]="userInput" placeholder="Type your message here..." rows="3"></textarea>

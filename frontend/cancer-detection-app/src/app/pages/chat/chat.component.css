@@ -151,3 +151,49 @@ button:hover {
 .ai-message {
     background-color: #f8d7da;
 }
+
+.upload-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.upload-label {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    margin-right: 10px; /* Space between label and button */
+    transition: background-color 0.3s;
+}
+
+.upload-label:hover {
+    background-color: #e0e0e0; /* Light grey on hover */
+}
+
+.upload-label input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
+.upload-label span {
+    color: var(--background); /* Color for the text */
+    font-size: 15px; /* Font size for the label */
+}
+
+.upload-section button {
+    padding: 10px;
+    background-color: #28a745; /* Green color for the button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.upload-section button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
