@@ -1,8 +1,7 @@
 <div class="chat-container" *ngIf="isLoggedIn; else loginPrompt">
     <div class="header">
         <h1>Chat with AI Assistant</h1>
-        <!-- Remove the New Chat button -->
-        <!-- <button (click)="createNewChat()">New Chat</button> -->
+        <button (click)="createNewChat()">New Chat</button> <!-- Button to create new chat -->
     </div>
 
     <div class="chat-list">
