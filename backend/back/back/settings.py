@@ -85,6 +85,11 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'  # Ð”Ð
 ROOT_URLCONF = 'back.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
+# settings.py
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",  # Your Angular app URL
+]
+
 
 TEMPLATES = [
     {

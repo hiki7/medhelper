@@ -8,6 +8,7 @@ import { AuthStateService } from './auth-state.service'; // Import the new servi
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title: string = 'cancer-detection-app';
   logged: boolean = false;
 
   constructor(private authService: AuthService, private authState: AuthStateService) {
