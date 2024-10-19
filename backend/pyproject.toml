@@ -16,6 +16,8 @@ django-cors-headers = "^4.5.0"
 psycopg2 = "^2.9.10"
 azure-communication-email = "^1.0.0"
 pillow = "^11.0.0"
+torch = "^2.5.0"
+torchvision = "^0.20.0"
 
 
 [build-system]
