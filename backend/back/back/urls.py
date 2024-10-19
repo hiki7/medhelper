@@ -21,7 +21,10 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.conf import settings
 from login.views import CustomTokenObtainPairView
 from login.views import RegisterView,EmailConfirmView
-from assistant.views import openai_assistant_view
+from assistant.views import upload_image_or_text_api
+# from assistant.views import upload_photo
+from chat.views import create_chat, get_chat_context_api
+from chat.views import ChatListView
 
 
 urlpatterns = [
@@ -31,6 +34,10 @@ urlpatterns = [
     path("refresh/", TokenRefreshView.as_view()),
     path('register/', RegisterView.as_view(), name='register'),
     path('confirm-email/<str:token>/', EmailConfirmView.as_view(), name='confirm_email'),
-    path('assistant/', openai_assistant_view, name='openai_assistant'),
+    path('assistant/', upload_image_or_text_api, name='openai_assistant'),
+    # path('upload_photo/', upload_photo, name='upload photo'),
+    path('create_chat/', create_chat, name='create_chat'),
+    path('get_context/', get_chat_context_api, name='get_context'),
+    path('chats/', ChatListView.as_view(), name='chat-list'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
