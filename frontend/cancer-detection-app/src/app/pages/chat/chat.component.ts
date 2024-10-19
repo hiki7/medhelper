@@ -22,7 +22,7 @@ export class ChatComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private authState: AuthStateService,
-    private chatService: ChatService // Inject the chat service
+    private chatService: ChatService
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class ChatComponent implements OnInit {
       }
     });
 
-    // Check if the user is logged in by safely accessing localStorage
+    // Check if the user is logged in
     if (typeof window !== 'undefined' && window.localStorage) {
       const access: string | null = localStorage.getItem('access');
       this.isLoggedIn = !!access; // Set logged status based on access token
@@ -49,7 +49,7 @@ export class ChatComponent implements OnInit {
   loadChatList(): void {
     this.chatService.getChatList().subscribe(
       chats => {
-        this.chatList = chats; // Store the fetched chats in chatList
+        this.chatList = chats; // Store the fetched chats
       },
       error => {
         console.error('Error loading chat list:', error);
@@ -79,35 +79,35 @@ export class ChatComponent implements OnInit {
     }
   }
 
+  createNewChat(): void {
+    this.currentChat = { title: 'New Chat' }; // Temporary chat
+    this.messages = []; // Clear messages for the new chat
+    this.showTextarea = true; // Show the textarea for user input
+  }
+
   sendMessage(): void {
     if (this.userInput.trim()) {
       this.messages.push({ text: this.userInput, isUser: true });
 
-      // Check if there's no current chat; if not, create a new chat
+      // If there's no current chat, create one
       if (!this.currentChat) {
-        this.chatService.createChat().subscribe(chat => {
-          this.currentChat = chat; // Set the current chat to the newly created chat
-          this.saveMessage(); // Save the user message and get AI response
-        });
-      } else {
-        this.saveMessage(); // Save the user message and get AI response
+        this.createNewChat();
       }
-    }
-  }
 
-  private saveMessage(): void {
-    this.chatService.sendMessage(this.currentChat.title, this.userInput).subscribe(
-      response => {
-        const aiResponse = response.result; // Assuming your API returns the AI response
-        this.messages.push({ text: aiResponse, isUser: false }); // Add AI response to messages
-        this.currentChat.title = aiResponse; // Update the chat title with AI response
-        this.userInput = ''; // Clear user input
-        this.scrollToBottom(); // Scroll to the bottom
-      },
-      error => {
-        console.error('Error sending message:', error);
-      }
-    );
+      // Save the user message and get AI response
+      this.chatService.sendMessage(this.currentChat.title, this.userInput).subscribe(
+        response => {
+          const aiResponse = response.result; // Assuming your API returns the AI response
+          this.messages.push({ text: aiResponse, isUser: false }); // Add AI response
+          this.currentChat.title = aiResponse; // Update chat title with AI response
+          this.userInput = ''; // Clear user input
+          this.scrollToBottom(); // Scroll to the bottom
+        },
+        error => {
+          console.error('Error sending message:', error);
+        }
+      );
+    }
   }
 
   scrollToBottom(): void {
