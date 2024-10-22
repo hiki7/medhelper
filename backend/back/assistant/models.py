@@ -15,6 +15,8 @@ User = get_user_model()
 class Chat(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='chats', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, blank=False, null=False)
+    is_cancer_related = models.BooleanField(null=True, default=None)
+    already_said = models.BooleanField(null=True, default=None)
 
     def __str__(self):
         return f"Чат {self.id} пользователя {self.user.email}"
