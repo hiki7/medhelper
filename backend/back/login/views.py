@@ -8,6 +8,7 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.tokens import TokenError, AccessToken
 from .email_utils import send_confirmation_email
+from rest_framework.permissions import AllowAny
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
@@ -16,6 +17,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 User = get_user_model()
 
 class RegisterView(APIView):
+    permission_classes = [AllowAny]
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
@@ -48,6 +50,7 @@ class RegisterView(APIView):
 # User = get_user_model()
 
 class EmailConfirmView(APIView):
+    permission_classes = [AllowAny]
     def get(self, request, token):
         try:
             # Проверка токена и активация пользователя
