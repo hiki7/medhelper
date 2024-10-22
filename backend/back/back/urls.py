@@ -25,6 +25,7 @@ from assistant.views import upload_image_or_text_api
 # from assistant.views import upload_photo
 from chat.views import create_chat, get_chat_context_api
 from chat.views import ChatListView
+from modelPredictor.views import predict_tumor
 
 
 urlpatterns = [
@@ -39,5 +40,6 @@ urlpatterns = [
     path('create_chat/', create_chat, name='create_chat'),
     path('get_context/', get_chat_context_api, name='get_context'),
     path('chats/', ChatListView.as_view(), name='chat-list'),
+    path('predict/', predict_tumor, name='predict_tumor'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
