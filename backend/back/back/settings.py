@@ -49,10 +49,12 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
 
     "corsheaders",
+    "drf_spectacular"
 ]
 
 AZURE_SUBSCRIPTION_KEY = '575ffafce3024e9ea31fdc6b474f0e51'
 AZURE_OPENAI_ENDPOINT = 'https://aask-m2a0qf22-swedencentral.openai.azure.com/openai/deployments/gpt-4-2/chat/completions?api-version=2024-08-01-preview'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,11 +87,6 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'  # Ð”Ð
 ROOT_URLCONF = 'back.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
-# settings.py
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",  # Your Angular app URL
-]
-
 
 TEMPLATES = [
     {
@@ -117,7 +114,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cancerdetector',  
+        'NAME': 'medhelper',
         'USER': 'cancerdetector_admin',
         'PASSWORD': 'QAZqaz123',
         'HOST': 'localhost',  
@@ -127,6 +124,18 @@ DATABASES = {
 
 AUTH_USER_MODEL = 'login.CustomUser'
 DEBUG = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -171,11 +180,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Medhelper API',
+    'DESCRIPTION': 'API documentation for your project',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,  # For excluding schema from the API itself
 }

@@ -55,7 +55,7 @@ User = get_user_model()
 @csrf_exempt
 def get_chat_context_api(request):
     auth_header = request.headers.get('Authorization')
-
+    
     if not auth_header or not auth_header.startswith('Bearer '):
         return JsonResponse({'error': 'Требуется аутентификация: заголовок Authorization отсутствует или неверный'}, status=403)
 

@@ -21,8 +21,6 @@ class RegisterView(APIView):
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
-        first_name = request.data.get('firstName')
-        last_name = request.data.get('lastName')
         
         if not email or not password:
             return Response({'error': 'Email and password are required.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -32,8 +30,6 @@ class RegisterView(APIView):
 
         # Создаем пользователя с is_active=False
         user = User.objects.create_user(email=email, password=password)
-        user.first_name = first_name
-        user.last_name = last_name
         user.is_active = False
         user.save()
 

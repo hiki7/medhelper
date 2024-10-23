@@ -19,13 +19,13 @@ from modelPredictor.views import predict_tumor
 from django.test import Client
 from django.core.files.uploadedfile import SimpleUploadedFile
 
-User = get_user_model()
+User = get_user_model() 
 @csrf_exempt
 def upload_image_or_text_api(request):
     auth_header = request.headers.get('Authorization')
     if not auth_header or not auth_header.startswith('Bearer '):
         return JsonResponse({'error': 'Требуется аутентификация: заголовок Authorization отсутствует или неверный'}, status=403)
-    token = auth_header.split(' ')[1]
+    token = auth_header.split(' ')[1] 
 
     try:
         access_token = AccessToken(token)
@@ -38,7 +38,7 @@ def upload_image_or_text_api(request):
 
     except Exception as e:
         return JsonResponse({'error': f'Ошибка аутентификации: {str(e)}'}, status=403)
-
+    
     description = request.POST.get('description')
 
     image = request.FILES.get('image')
@@ -49,7 +49,7 @@ def upload_image_or_text_api(request):
 
     chat_title = request.POST.get('chat_title', 'New Chat')
     chat, created = Chat.objects.get_or_create(user=user, title=chat_title)
-
+    
     if not description and not image:
         return JsonResponse({'error': 'Необходимо предоставить описание или изображение'}, status=400)
     access_token = AccessToken(token)
@@ -69,12 +69,12 @@ def upload_image_or_text_api(request):
                 chat.already_said = False
             # user.last_name = " this user has liver cancer"
             chat.is_cancer_related = True
-
+            
         else:
             description += " SAY THAT I DONT HAVE LIVER CANCER"
             if chat.already_said == None:
                 chat.already_said = False
-
+                
             # user.last_name = " this user doent have liver cancer"
             chat.is_cancer_related = False
         chat.save()
@@ -85,7 +85,7 @@ def upload_image_or_text_api(request):
 
     else:
         message = Message.objects.create(chat=chat, sender=user, role='user', content=description)
-    temp = description
+    temp = description 
     a = 1
     tmp = ""
     if chat.is_cancer_related == 1:
@@ -95,11 +95,11 @@ def upload_image_or_text_api(request):
             tmp = "Based on the provided data, signs of liver cancer have been detected. Please seek medical attention immediately for confirmation and further treatment. "
     elif chat.is_cancer_related == 0:
         a = " Note: user doesn't have liver cancer "
-
+        
         if chat.already_said == False:
             chat.already_said = True
             tmp = "Based on the provided data, signs of liver cancer haven't been detected. Please seek medical attention immediately for confirmation and further treatment. "
-
+ 
     else:
         a = " "
         print("PORNO")
@@ -115,7 +115,7 @@ def upload_image_or_text_api(request):
     message.save()
 
 
-
+    
     # openai_response = send_message_to_openai(description, context)
     # cancer_message = "send your x-Ray"
 
@@ -157,9 +157,9 @@ def upload_image_or_text_api(request):
     if message_count == 1 and chat_title == "New Chat":
         time.sleep(8)
         print("Входим в условие: сообщений в чате ровно 1")
-
+        
         gpt_title_prompt = f"Запрос пользователя: '{description}'. Придумай подходящее название для этого чата.должно быть меньше 255 символов. ответь просто названием"
-
+        
         new_chat_title = send_message_to_openai(gpt_title_prompt, [])
 
         if len(new_chat_title) > 255:
@@ -180,7 +180,7 @@ def upload_image_or_text_api(request):
 
 
 def send_message_to_openai(prompt, context):
-    if not context:
+    if not context: 
         context = [
             {
                 "role": "system",
@@ -194,7 +194,7 @@ def send_message_to_openai(prompt, context):
     api_key = '27aceb1e35e24107b228f3ce5a765ae1'
     api_version = '2024-08-01-preview'
     headers = {
-        'api-key': '27aceb1e35e24107b228f3ce5a765ae1',
+        'api-key': '27aceb1e35e24107b228f3ce5a765ae1', 
         'Content-Type': 'application/json',
     }
     data = {
@@ -208,7 +208,7 @@ def send_message_to_openai(prompt, context):
     if response.status_code == 200:
         print(response)
         result = response.json()
-
+        
         return result.get('choices')[0]['message']['content']
     else:
         return f"Error: {response.status_code}, {response.text}"
@@ -222,13 +222,13 @@ def get_chat_context(chat_title, access_token):
         chat = Chat.objects.get(Q(user=user) & Q(title__iexact=chat_title.strip()))
     except Chat.DoesNotExist:
         return JsonResponse({'error': 'Чат с таким названием не найден'}, status=404)
-    messages = chat.messages.all().order_by('created_at')
-
+    messages = chat.messages.all().order_by('created_at')  
+    
     if chat.is_cancer_related == 1:
         system_message = """
  You are an AI assistant specializing in liver health, with a focus on liver cancer. The user has been diagnosed with liver cancer. Your role is to provide accurate and compassionate guidance related to liver cancer, including diagnosis, treatment options, lifestyle adjustments, and preventive measures. Be ready to discuss the latest research, clinical trials, medications, and support the user in managing their condition. Provide thoughtful, respectful, and relevant responses to the user's questions regarding liver cancer and related health concerns.
  """
-
+        
     elif chat.is_cancer_related == 0:
         system_message = """
 You are an AI assistant specializing in liver health. The user does not have liver cancer, but they may have concerns or questions regarding liver health, diagnostics, preventive measures, and lifestyle recommendations to maintain a healthy liver. Provide accurate and compassionate guidance related to liver wellness, including advice on preventing liver diseases, understanding liver function tests, and supporting overall liver health. Be prepared to answer any questions the user may have about liver health, even if they do not currently have liver cancer.
@@ -258,3 +258,6 @@ You are an AI assistant specializing in liver health. The user does not have liv
             })
 
     return context
+
+
+
