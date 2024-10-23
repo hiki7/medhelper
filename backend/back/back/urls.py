@@ -25,9 +25,18 @@ from assistant.views import upload_image_or_text_api
 # from assistant.views import upload_photo
 from chat.views import create_chat, get_chat_context_api
 from chat.views import ChatListView
+from modelPredictor.views import predict_tumor
 
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 
 urlpatterns = [
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/docs/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('admin/', admin.site.urls),
     # path("login/", TokenObtainPairView.as_view()),
     path("login/", CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -39,5 +48,6 @@ urlpatterns = [
     path('create_chat/', create_chat, name='create_chat'),
     path('get_context/', get_chat_context_api, name='get_context'),
     path('chats/', ChatListView.as_view(), name='chat-list'),
+    path('predict/', predict_tumor, name='predict_tumor'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

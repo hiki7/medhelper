@@ -3,7 +3,7 @@ from azure.core.exceptions import HttpResponseError
 
 def send_confirmation_email(to_email, confirm_url):
     # Ваш Connection String из Azure
-    connection_string = "endpoint=https://emailverification.europe.communication.azure.com/;accesskey=5AmtnaiV7QFEFai8chBBuvjfILWL1UjlwID9btaCJh2vRAz5JtsdJQQJ99AJACULyCp3TOYfAAAAAZCSxhkP"
+    connection_string = "endpoint=https://newemail123.europe.communication.azure.com/;accesskey=4N4DHccFZ0nXjTa80BpZH2r5avJJTDq1BLFEPi34MIkoK4P7IsKjJQQJ99AJACULyCp3TOYfAAAAAZCSmFHC"
 
     # Создаем клиента для отправки писем
     email_client = EmailClient.from_connection_string(connection_string)
@@ -24,7 +24,7 @@ def send_confirmation_email(to_email, confirm_url):
             ]
         },
         # Используем подтвержденного отправителя
-        "senderAddress": "DoNotReply@ba47d0de-c058-47ac-8e7b-a9a693a45d09.azurecomm.net"
+        "senderAddress": "DoNotReply@medhelper.xyz"
     }
 
     try:

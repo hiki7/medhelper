@@ -4,4 +4,4 @@ from assistant.models import Chat
 class ChatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chat
-        fields = ['id', 'title', 'user']
+        fields = ['id', 'title', 'user'] 
